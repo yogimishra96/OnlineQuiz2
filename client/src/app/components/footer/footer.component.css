@@ -1,0 +1,16 @@
+footer{
+  background-color: #4d0026;
+  color: #ffffff;
+  padding-top: 20px;
+  padding-bottom: 50px;
+
+}
+ul li {
+  list-style-type: none;
+}
+.container{
+  margin-left: 50px;
+}
+.about{
+  font-size: 15px;
+}

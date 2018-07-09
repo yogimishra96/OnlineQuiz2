@@ -1,0 +1,25 @@
+.carousel-control span {
+  font-size: 80px;
+  display: block;
+  width: 50px;
+  height: 50px;
+  top: 46%;
+  border-radius: 50%;
+  line-height: 1;
+}
+.carousel-control span:before {
+  display: block;
+  line-height: 0.45;
+}
+.carousel-indicators li {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  transition: 0.2s;
+  margin: 1px;
+}
+img{
+  width: 100%;
+  height: 300px;
+
+}

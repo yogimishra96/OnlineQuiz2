@@ -1,0 +1,93 @@
+<mat-toolbar class="navbar text-center">
+  <button mat-button [routerLink]="['/home']" ><h3><strong>TechGig</strong></h3></button>
+  <span class="space"></span>
+  <div class="tabs">
+  <button mat-button [routerLink]="['/home']"><b>Home</b></button>
+    <button mat-button class="menu" [matMenuTriggerFor]="menu"><b>Courses</b></button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>C Language</button>
+      <button mat-menu-item>Java</button>
+      <button mat-menu-item>Data Structure</button>
+      <button mat-menu-item>Java</button>
+      <button mat-menu-item>Java</button>
+      <button mat-menu-item>Java</button>
+
+    </mat-menu>
+  <button mat-button [routerLink]="['/about']"><b>About</b></button>
+  <button mat-button [routerLink]="['/contact']"><b>Contact</b></button>
+  </div>
+  <span class="space"></span>
+  <a class="sidemenu" data-toggle="modal" data-target="#sign"><b>Sign In</b></a><h3>|</h3>
+  <a class="sidemenu"  data-toggle="modal" data-target="#register"><b>Register </b></a>
+</mat-toolbar>
+
+<!--------------------------------------------------LoginModal--------------------------------------------------------------->
+
+<div class="modal fade" id="sign" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <form class="form-signin text-center" >
+          <mat-toolbar>
+            <h3>Please Login Here!!!!</h3>
+            <span class="space"></span>
+            <select [(ngModel)]="person">
+              <option value="user">User</option>
+              <option value="admin">Admin</option>
+            </select>
+          </mat-toolbar>
+          <mat-form-field>
+            <input matInput type="text" [(ngModel)]="email" name="name"
+                    class="form-control" placeholder="Email" required autofocus>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput type="password" [(ngModel)]="password" name="password"
+                   type="password" class="form-control" placeholder="Password" required>
+          </mat-form-field>
+
+          <button  mat-raised-button class= "btn login"
+                   type="submit" value="submit" (click)="onLoginSubmit()">Log In</button>
+
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+<!--------------------------------------------------RegisterModal--------------------------------------------------------------->
+
+<div class="modal fade" id="register" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <form class="form-signin text-center" (submit)="onRegisterSubmit()">
+          <mat-toolbar  >
+            <h3>Please Register Here!!!!</h3>
+          </mat-toolbar>
+          <mat-form-field>
+            <input matInput type="text" [(ngModel)]="name" name="name"   id="name"
+                   class="form-control cap" placeholder="Name" required autofocus />
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput type="email" [(ngModel)]="email" name="email" id="email"
+                   class="form-control" placeholder="Email" required >
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput type="password" [(ngModel)]="password" name="password"
+                   type="password" id="inputPassword" class="form-control" placeholder="Password"
+                   required minlength="8" maxlength="20">
+          </mat-form-field>
+          <button  mat-raised-button class= "btn login"
+                   type="submit" value="submit">Create Account</button>
+
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
