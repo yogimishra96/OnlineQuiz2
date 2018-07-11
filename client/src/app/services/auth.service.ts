@@ -24,21 +24,13 @@ export class AuthService {
     authenticateUser(user){
      let header= new HttpHeaders();
       header.append('Content-Type','application/json');
-     if(this.user.person ==='admin'){
-       // return this.http.post('http://localhost:8000/users/admin/authenticate',user,{headers:header})
-       //   .pipe(map((res: any) => {
-       //     console.log('res', res);
-       //     return res;
-       //   }));
-
-     }
-     else {
-       return this.http.post('http://localhost:8000/users/authenticate', user, {headers: header})
+       return this.http.post('http://localhost:8000/users/authenticate',user,{headers:header})
          .pipe(map((res: any) => {
            console.log('res', res);
            return res;
          }));
-     }
+
+
 }
 
   getProfile(){

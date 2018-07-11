@@ -30,7 +30,13 @@ export class NavbarComponent implements OnInit {
     this.authService.authenticateUser(user).subscribe(data=>{
       if (data.success){
         this.authService.storedUserData(data.token, data.user)
-        this.router.navigate(['dashboard'])
+
+        if(data.roleid===1){
+          this.router.navigate(['admindash'])
+        }
+        else {
+          this.router.navigate(['dashboard'])
+        }
       }
       else{
         this.router.navigate(['home'])
