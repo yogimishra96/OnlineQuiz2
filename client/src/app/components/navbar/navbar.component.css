@@ -29,7 +29,11 @@ button .material-icons{
  .navbar h3{
    color: #ffffff;
  }
- .sidemenu{
+ #sideButton{
+   cursor: pointer;
+ }
+ #sideButton button{
+   padding: 0px;
    cursor: pointer;
  }
 /*-------------------------------------------------Navbar ends------------------------------------------------*/

@@ -26,7 +26,7 @@ export class AuthService {
       header.append('Content-Type','application/json');
        return this.http.post('http://localhost:8000/users/authenticate',user,{headers:header})
          .pipe(map((res: any) => {
-           console.log('res', res);
+           //console.log('res', res);
            return res;
          }));
 
@@ -35,9 +35,9 @@ export class AuthService {
 
   getProfile(){
   let header= new HttpHeaders();
-  // this.loadToken();
-  // console.log(this.authToken);
-  header.append('Authorization',localStorage.getItem('id_token'));
+  this.loadToken();
+  console.log(this.authToken);
+    header.append('Authorization',this.authToken);
   header.append('Content-Type','application/json');
   return this.http.get('http://localhost:8000/users/profile',{headers:header})
     .pipe(map((res: any) => {
@@ -54,9 +54,10 @@ storedUserData(token,user){
 }
 
 loadToken(){
-    const token = localStorage.getItem('id.token');
+    const token = localStorage.getItem('id_token');
     this.authToken=token;
 }
+
 
 
 logout(){

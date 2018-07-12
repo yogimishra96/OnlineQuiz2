@@ -1,0 +1,21 @@
+<mat-toolbar class="navbar text-center">
+  <button mat-button [routerLink]="['/admindash']" ><h3><strong>TechGig Admin Panel</strong></h3></button>
+  <span class="space"></span>
+  <div class="tabs">
+    <button mat-button class="user" [matMenuTriggerFor]="user"><b>User</b></button>
+    <mat-menu #user="matMenu">
+      <button mat-menu-item [routerLink]="['/userregister']">Register User </button>
+      <button mat-menu-item [routerLink]="['/admincontact']">Recently Contacted</button>
+    </mat-menu>
+
+    <button mat-button class="test" [matMenuTriggerFor]="test"><b>Test</b></button>
+    <mat-menu #test="matMenu">
+      <button mat-menu-item [routerLink]="['/addtest']" >Add Test</button>
+      <button mat-menu-item [routerLink]="['/viewtest']">View Test</button>
+    </mat-menu>
+    <button mat-button [routerLink]="['/score']"><b>Score Card</b></button>
+    <button  mat-button (click)="onLogoutClick()"><b>Logout</b></button>
+
+  </div>
+</mat-toolbar>
+

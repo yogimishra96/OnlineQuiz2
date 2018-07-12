@@ -4,34 +4,47 @@ const bcrypt = require('bcryptjs');
 
 //user Schema
 
-const UserSchema = mongoose.Schema({
-    roleid:{
-      type:String,
-        required: true
-    },
-    name:{
-        type: String,
-        required: true
-    },
+const AdminSchema = mongoose.Schema({
     email:{
         type: String,
         required: true
     },
-    password: {
+    question: {
         type: String,
         required: true
-    }
+    },
+    optionA: {
+        type: String,
+        required: true
+    },
+
+    optionB: {
+        type: String,
+        required: true
+    },
+    optionC: {
+        type: String,
+        required: true
+    },
+    optionD: {
+        type: String,
+        required: true
+    },
+    rightAnswer: {
+        type: String,
+        required: true
+    },
 });
-const User = module.exports = mongoose.model('User',UserSchema);
+const Admin = module.exports = mongoose.model('Admin',AdminSchema);
 
 module.exports.getUserById = function(id,callback){
 
-       User.findById(id, callback);
+    User.findById(id, callback);
 }
 
 module.exports.getUserByUsername = function(email,callback){
     const query = {email:email}
-   return User.findOne(query,callback);
+    return Admin.findOne(query,callback);
 }
 
 
@@ -46,12 +59,10 @@ module.exports.addUser = function(newUser,callback){
     });
 }
 
+// db.collection("quiz").insertMany(docs, function(err, res) {
+//     if (err) throw err;
+//     console.log(res.insertedCount+" documents inserted");
+//
+// });
 
-module.exports.comparePassword =function (candidatePassword, hash, callback) {
-    bcrypt.compare(candidatePassword, hash,(err,isMatch)=>
-    {
-        if (err) throw err;
-        callback(null,isMatch);
-    });
 
-}

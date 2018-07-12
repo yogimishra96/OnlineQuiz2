@@ -9,13 +9,11 @@ const config = require('../../config/database');
 
 router.post('/register',(req,res,next)=>
 {   let newUser = new User({
-    firstname: req.body.firstname,
-    lastname: req.body.lastname,
-    sex: req.body.sex,
-    contact: req.body.contact,
+    roleid: '0',
+    name: req.body.name,
     email: req.body.email,
-    username: req.body.username,
     password: req.body.password
+
 });
    User.addUser(newUser,(err,user)=>{
        if(err){
@@ -28,9 +26,9 @@ router.post('/register',(req,res,next)=>
 
 router.post('/authenticate',(req,res,next)=>
 {
-    const username = req.body.username;
+    const email = req.body.email;
     const password = req.body.password;
-    User.getUserByUsername(username, (err,user)=>
+    User.getUserByUsername(email, (err,user)=>
     {
         if (err)throw err;
         if (!user){
@@ -47,13 +45,10 @@ router.post('/authenticate',(req,res,next)=>
                     success:true,
                     token:`Bearer ${token}`,
                     user:{
+                        roleid:user.roleid,
                         id:user._id,
-                        firstname:user.firstname,
-                        lastname:user.lastname,
-                        sex:user.sex,
-                        contact:user.contact,
-                        email:user.email,
-                        username:user.username
+                        name:user.name,
+                        email:user.email
                     }
                 });
             }

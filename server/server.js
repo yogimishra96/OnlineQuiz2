@@ -39,6 +39,9 @@ app.use(express.static(path.join(__dirname,'public')));
 const users = require('./app/routes/user')
 app.use('/users',users);
 
+const admin = require('./app/routes/admin')
+app.use('/admin',admin);
+
 
 //port number
 const port = 8000;

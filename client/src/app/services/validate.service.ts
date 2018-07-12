@@ -24,4 +24,8 @@ export class ValidateService {
     return re.test(password);
   }
 
+  validateTest(question) {
+    const re = /^[0-9]{1,3}$/;
+    return re.test(question);
+  }
 }

@@ -12,7 +12,8 @@ import { MatInputModule,
          MatMenuModule,
          MatExpansionModule,
          MatRadioModule,
-         MatDialogModule } from "@angular/material";
+         MatDialogModule,
+         MatSelectModule} from "@angular/material";
 import { MatIconModule } from '@angular/material/icon';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatTableModule} from '@angular/material/table';
@@ -43,6 +44,7 @@ import { ViewtestComponent } from './admin/viewtest/viewtest.component';
 //Services
 import{ ValidateService } from './services/validate.service';
 import{ AuthService } from "./services/auth.service";
+import { AddquestionComponent } from './admin/addquestion/addquestion.component';
 
 //paths
 const appRoutes :Routes =[
@@ -56,6 +58,7 @@ const appRoutes :Routes =[
   {path:'userregister',component:UserregisterComponent},
   {path:'admincontact',component:AdmincontactComponent},
   {path:'addtest',component:AddtestComponent},
+  {path:'addquestion',component:AddquestionComponent},
   {path:'viewtest',component:ViewtestComponent},
   {path:'score',component:AdminscoreComponent}
 ];
@@ -78,7 +81,8 @@ const appRoutes :Routes =[
     AdmincontactComponent,
     AdminscoreComponent,
     AddtestComponent,
-    ViewtestComponent
+    ViewtestComponent,
+    AddquestionComponent
   ],
   imports: [
     BrowserModule,
@@ -95,6 +99,7 @@ const appRoutes :Routes =[
     MatMenuModule,
     MatIconModule,
     MatRadioModule,
+    MatSelectModule,
     RouterModule.forRoot(appRoutes),
     MatSidenavModule,
     MatTableModule,
@@ -103,6 +108,7 @@ const appRoutes :Routes =[
   providers: [ValidateService,
               FlashMessagesService,
               AuthService],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,38 @@
+<app-adminnavbar></app-adminnavbar>
+<!-------------------------------------------------table-------------------------------------->
+<div class="container">
+  <mat-card-header class="text-center"><h3><b>Registered User</b></h3></mat-card-header>
+  <mat-form-field class="filter">
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+</mat-form-field>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 text-center">
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="position">
+    <th mat-header-cell *matHeaderCellDef  class="text-center"> No. </th>
+    <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef class="text-center"> Name </th>
+    <td mat-cell *matCellDef="let element" > {{element.name}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="weight">
+    <th mat-header-cell *matHeaderCellDef class="text-center"> Weight </th>
+    <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="symbol">
+    <th mat-header-cell *matHeaderCellDef class="text-center"> Symbol </th>
+    <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+</div>

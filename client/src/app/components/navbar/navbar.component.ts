@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import{ AuthService} from "../../services/auth.service";
 import{Router} from "@angular/router";
-import{ FlashMessagesService} from "angular2-flash-messages/module/flash-messages.service";
 import {ValidateService} from "../../services/validate.service";
 
 @Component({
@@ -13,14 +12,32 @@ export class NavbarComponent implements OnInit {
   name:String;
   email:String;
   password:String;
+  html:any;
 
   constructor(private authService :AuthService,
-              private flashMessage:FlashMessagesService,
               private router:Router,
               private validateService: ValidateService) { }
 
-  ngOnInit() {
+
+  ngOnInit(){
+    this.authService.loadToken();
+    if(this.authService.authToken!= null) {
+      this.html='<span>'
+      this.html += '<button mat-button class="logout" (click)="onLogoutClick()"><b>Logout</b></button>';
+
+      this.html+='</span>'
+      document.getElementById('sideButton').innerHTML = this.html;
+    }
+    else{
+      this.html='<span>'
+      this.html += '<a data-toggle="modal" data-target="#sign"><b>Sign In|</b></a>';
+      this.html+= '<a  data-toggle="modal" data-target="#register"><b>Register </b></a>'
+      this.html+='</span>'
+      document.getElementById('sideButton').innerHTML = this.html;
+    }
+
   }
+
   //-------------------------------------- LOGIN----------------------------------------------------------
   onLoginSubmit(){
     const user={
@@ -30,8 +47,8 @@ export class NavbarComponent implements OnInit {
     this.authService.authenticateUser(user).subscribe(data=>{
       if (data.success){
         this.authService.storedUserData(data.token, data.user)
-
-        if(data.roleid===1){
+        alert('Welcome '+data.user.name);
+        if(data.user.roleid== '1'){
           this.router.navigate(['admindash'])
         }
         else {
@@ -39,10 +56,9 @@ export class NavbarComponent implements OnInit {
         }
       }
       else{
+        alert('Id password donot matched');
         this.router.navigate(['home'])
-
       }
-
     });
   }
 
@@ -54,47 +70,40 @@ export class NavbarComponent implements OnInit {
       password: this.password
     }
     if(!this.validateService.validateRegister(user)){
-      this.flashMessage.show('Please fill in the details',{cssClass: 'alert-danger', timeout: 3000});
+      alert('Please Fill in the details');
       return false;
     }
 
 
     if(!this.validateService.validateEmail(user.email)){
-      this.flashMessage.show('Please use a valid email',{cssClass: 'alert-danger', timeout: 3000});
+      alert('Please enter valid email');
       return false;
     }
 
 
     if(!this.validateService.validatePassword(user.password)){
-      this.flashMessage.show('Please enter valid password',{cssClass: 'alert-danger', timeout: 3000});
+      alert('Please enter valid password');
       return false;
     }
 
 //register
     this.authService.registerUser(user).subscribe(data =>{
       if (data.success){
-        this.flashMessage.show('Successfully Register',{cssClass: 'alert-success', timeout: 3000});
+
         this.router.navigate(['/home']);
       }
       else{
-         this.flashMessage.show('Something went wrong',{cssClass: 'alert-danger', timeout: 3000});
+        alert('Something went wrong');
 
       }
-
     })
-
-
   }
-
 
   onLogoutClick(){
     const log= this.authService.logout();
 
     if (log) {
-      // this.flashMessage.show('You are Logged Out',{
-      //   cssClass: 'alert-success',
-      //   timeout: 3000});
-      this.router.navigate(['/login']);
+      this.router.navigate(['/home']);
       return false;
     }
 

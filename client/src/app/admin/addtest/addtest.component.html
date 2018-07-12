@@ -1,0 +1,50 @@
+<app-adminnavbar></app-adminnavbar>
+<div *ngIf="selectedOption==null|| totalques==null ||onButton==false" class="detail">
+  <form class="form" >
+    <mat-toolbar class="text-center"><b>ADD Test</b></mat-toolbar>
+    <label class="text-left "><b>Select subject</b></label>
+      <select [(ngModel)]="selectedOption" name="first" class="subject">
+        <option *ngFor="let o of options">
+          {{o.name}}
+        </option>
+      </select>
+  <mat-form-field>
+  <input matInput type="text" [(ngModel)]="totalques" name="number"   id="number"
+         class="form-control" placeholder="Enter no. of questions" required >
+  </mat-form-field><br>
+    <button mat-button (click)="onClick()"><b>Add</b></button>
+  </form>
+</div>
+
+
+<!-----------------------------------------------------------ADD QUESTION------------------------------------------------------------------------>
+
+<div *ngIf="selectedOption!=null && totalques!=null && onButton==true"class="addques text-center">
+  <form *ngIf=" totalques > i " class="form">
+    <mat-toolbar class="text-center"><b>Question {{i+1}}</b></mat-toolbar>
+    <mat-form-field class="question">
+      <textarea matInput rows="3" [(ngModel)]="question" name="question"   id="question"
+                class="form-control" placeholder="Question" required></textarea>
+    </mat-form-field>
+
+    <mat-form-field class="option">
+      <input matInput type="text" [(ngModel)]="optionA" name="optionA"   id="optionA"
+             class="form-control" placeholder="Option A" required/>
+    </mat-form-field>
+    <mat-form-field class="option">
+      <input matInput type="text" [(ngModel)]="optionB" name="optionB"   id="optionB"
+             class="form-control" placeholder="Option B" required />
+    </mat-form-field><br>
+
+    <mat-form-field class="option">
+      <input matInput type="text" [(ngModel)]="optionC" name="optionC"   id="optionC"
+             class="form-control" placeholder="Option C" required />
+    </mat-form-field>
+    <mat-form-field class="option">
+      <input matInput type="text" [(ngModel)]="optionD" name="optionD"   id="optionD"
+             class="form-control" placeholder="Option D" required />
+    </mat-form-field>
+    <button class="submit" mat-button type="submit"><b>Submit</b></button>
+
+  </form>
+</div>

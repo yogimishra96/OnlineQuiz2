@@ -16,18 +16,23 @@
   <button mat-button [routerLink]="['/about']"><b>About</b></button>
   <button mat-button [routerLink]="['/contact']"><b>Contact</b></button>
   </div>
+
   <span class="space"></span>
-  <a class="sidemenu" data-toggle="modal" data-target="#sign"><b>Sign In</b></a><h3>|</h3>
-  <a class="sidemenu"  data-toggle="modal" data-target="#register"><b>Register </b></a>
+  <div id="sideButton">
+
+  </div>
+
+  <!--<a class="sidemenu" data-toggle="modal" data-target="#sign"><b>Sign In</b></a><h3>|</h3>-->
+  <!--<a class="sidemenu"  data-toggle="modal" data-target="#register"><b>Register </b></a>-->
 </mat-toolbar>
 
 <!--------------------------------------------------LoginModal--------------------------------------------------------------->
 
-<div class="modal fade" id="sign" role="dialog">
+<div class="modal" id="sign" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-body">
-        <form class="form-signin text-center" >
+        <form class="form-signin text-center" (submit)="onLoginSubmit()" >
           <mat-toolbar>
             <h3>Please Login Here!!!!</h3>
             <span class="space"></span>
@@ -42,7 +47,7 @@
           </mat-form-field>
 
           <button  mat-raised-button class= "btn login"
-                   type="submit" value="submit" (click)="onLoginSubmit()">Log In</button>
+                   type="submit" value="submit">Log In</button>
 
         </form>
       </div>
