@@ -5,14 +5,10 @@
   flex: 1 1 auto;
 }
 mat-toolbar{
-  background-color: #4d0026;
+  background-color: #15428c;
   font-family: "Times New Roman";
 }
-button .material-icons{
-  width: 25px;
-  height: 35px;
-  padding-top: 5px;
-}
+
 .tabs button{
   font-size: 20px;
   font-family: "Times New Roman";
@@ -20,16 +16,13 @@ button .material-icons{
 }
 .navbar button:hover{
   background-color: #ffffff;
-  color: #4d0026;
-  padding: 5px;
-  text-underline: #4d0026;
-}
+  color: #15428c;
+  }
 
 .navbar button h3:hover{
   background-color: #ffffff;
-  color: #4d0026;
-  padding: 5px;
-  text-underline: #4d0026;
+  color: #15428c;
+  text-underline: #15428c;
 }
 
 .navbar button{

@@ -2,8 +2,14 @@
 .space{
   flex: 1 1 auto;
 }
+/deep/.modal-open{
+  padding-right: 0px !important;
+}
+/deep/.modal-backdrop.show{
+  display:none;
+}
  mat-toolbar{
-   background-color: #4d0026;
+   background-color: #15428c;
    font-family: "Times New Roman";
  }
 button .material-icons{
@@ -18,17 +24,25 @@ button .material-icons{
  }
  .navbar button:hover{
    background-color: #ffffff;
-   color: #4d0026;
-   padding: 5px;
-   text-underline: #4d0026;
+   color: #15428c;
+
+   text-underline: #15428c;
  }
 
 .navbar a{
    color: #ffffff;
  }
- .navbar h3{
-   color: #ffffff;
- }
+ /*.navbar h3{*/
+   /*color: #ffffff;*/
+ /*}*/
+.form-signin .mat-form-field,.form-signin input{
+  width:100%;
+  margin:0px;
+  padding:10px;
+}
+/deep/.form-signin .mat-form-field-infix{
+  margin-top:20px;
+}
  #sideButton{
    cursor: pointer;
  }
@@ -45,28 +59,28 @@ mat-form-field{
   padding: 5px;
   margin: 20px;
 }
-
 .login{
-
   width: 400px;
-  margin-bottom: 20px;
-  margin-top: 20px;
+  margin-bottom: 24px;
+  margin-top: 36px;
 }
 mat-form-field,
 input
 {
   width: 80%;
 }
-
-
 mat-toolbar{
-  background-color: #4d0026 ;
+  background-color: #15428c ;
   color: #ffffff;
 }
 form{
-  border:2px solid #4d0026;
+  border:2px solid #15428c;
 }
 .login{
-  background-color: #4d0026 ;
+  background-color: #15428c;
   color: #ffffff;
+}
+
+.sidemenu{
+  cursor: pointer;
 }

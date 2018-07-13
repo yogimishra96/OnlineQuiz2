@@ -14,9 +14,7 @@ export class AdminnavbarComponent implements OnInit {
               private router:Router,) { }
 
   ngOnInit() {
-
-
-  }
+    }
   onLogoutClick(){
     const log= this.authService.logout();
 

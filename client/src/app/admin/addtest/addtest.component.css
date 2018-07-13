@@ -1,3 +1,8 @@
+.space{
+  flex: 1 1 auto;
+}
+
+
 /*-----------------------------------------------ADD TEST---------------------------------------------------------*/
 .detail{
   width:25%;
@@ -11,10 +16,10 @@
 }
 .detail mat-toolbar{
   background-color: transparent;
-  color: #4d0026;
+  color: #15428c;
 }
 .detail button{
-  background-color: #4d0026;
+  background-color: #15428c;
   color: #ffffff;
   font-size: 15px;
   margin-bottom: 10px;
@@ -22,13 +27,13 @@
 
 }
 .detail .form{
-  border: 2px solid #4d0026;
+  border: 2px solid #15428c;
 
 }
 .detail .subject{
 
   width: 90%;
-  height: 25px;
+  padding:5px;
   margin-left: 20px;
 }
 .detail label{
@@ -45,18 +50,18 @@
 }
 
 .addques mat-toolbar{
-  background-color: #4d0026;
-  color: #ffffff;
+  background-color: transparent;
+  color: #15428c;
 }
 .addques button{
-  background-color: #4d0026;
+  background-color: #15428c;
   color: #ffffff;
   font-size: 15px;
   margin-bottom: 10px;
 }
 
 .addques .form{
-  border:2px solid #4d0026;
+  border:2px solid #15428c;
 
 }
 .addques .question{
@@ -71,5 +76,21 @@
 }
 .addques .submit{
   margin-top: 40px;
+  width: 100px;
+
+}
+.addques .answer{
+  margin-top: 30px;
+  margin-left: 10px;
+  width: 150px;
+  float: left;
+  padding: 5px;
+  font-size: 17px;
+}
+.addques .answerlabel{
+  float: left;
+  margin-top: 40px;
+  margin-left: 20px;
+
 }
 

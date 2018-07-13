@@ -21,7 +21,16 @@
 
 <div *ngIf="selectedOption!=null && totalques!=null && onButton==true"class="addques text-center">
   <form *ngIf=" totalques > i " class="form">
-    <mat-toolbar class="text-center"><b>Question {{i+1}}</b></mat-toolbar>
+    <mat-toolbar class="text-center"><b>Question {{i+1}}</b>
+      <span class="space"></span>
+      <label  class="answerlabel">Answer</label>
+      <select [(ngModel)]="answer" name="first" class="answer">
+        <option value="optionA">OptionA</option>
+        <option value="optionB">OptionB</option>
+        <option value="optionC">OptionC</option>
+        <option value="optionD">OptionD</option>
+      </select>
+    </mat-toolbar>
     <mat-form-field class="question">
       <textarea matInput rows="3" [(ngModel)]="question" name="question"   id="question"
                 class="form-control" placeholder="Question" required></textarea>
@@ -44,7 +53,7 @@
       <input matInput type="text" [(ngModel)]="optionD" name="optionD"   id="optionD"
              class="form-control" placeholder="Option D" required />
     </mat-form-field>
-    <button class="submit" mat-button type="submit"><b>Submit</b></button>
+    <button  class="submit" mat-button type="submit" (click)="onSubmit()"><b>Submit</b></button>
 
   </form>
 </div>

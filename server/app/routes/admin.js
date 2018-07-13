@@ -7,7 +7,7 @@ const config = require('../../config/database');
 
 
 
-router.post('/addquestion',(req,res,next)=>
+router.post('/addQuestion',(req,res,next)=>
 {   let admin = new Admin({
     question: req.body.question,
     optionA: req.body.optionA,
@@ -17,13 +17,23 @@ router.post('/addquestion',(req,res,next)=>
     rightAnswer:req.body.answer,
 
 });
-    Admin.addUser(newUser,(err,user)=>{
+
+    admin.save(function(res,err){
         if(err){
-            res.json({success: false, msg:'Failed to register user'});
+            res.json({success: false, msg:'Failed'});
         } else{
-            res.json({success: true, msg:'Successfully Registered'});
+            res.json({success: true, msg:'Successfully'});
         }
-    })
+
+    });
+
+    // admin.addUser(newUser,(err,user)=>{
+    //     if(err){
+    //         res.json({success: false, msg:'Failed to register user'});
+    //     } else{
+    //         res.json({success: true, msg:'Successfully Registered'});
+    //     }
+    // })
 });
 
 

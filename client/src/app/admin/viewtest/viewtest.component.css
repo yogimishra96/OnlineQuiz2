@@ -1,0 +1,6 @@
+.mat-elevation-z8{
+  width: 100%;
+}
+.table /deep/.mat-form-field{
+  width: 50%;
+}

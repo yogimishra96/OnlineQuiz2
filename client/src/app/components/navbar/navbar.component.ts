@@ -13,28 +13,29 @@ export class NavbarComponent implements OnInit {
   email:String;
   password:String;
   html:any;
-
+  buttons:any;
   constructor(private authService :AuthService,
               private router:Router,
               private validateService: ValidateService) { }
 
 
   ngOnInit(){
-    this.authService.loadToken();
-    if(this.authService.authToken!= null) {
-      this.html='<span>'
-      this.html += '<button mat-button class="logout" (click)="onLogoutClick()"><b>Logout</b></button>';
+    // this.authService.loadToken();
+    // if(this.authService.authToken!= null) {
+    //   this.html='<span>'
+    //   this.html += '<button mat-button (click)="onLogoutClick()" class="logout"><b>Logout</b></button>';
+    //
+    //   this.html+='</span>'
+    //   document.getElementById('sideButton').innerHTML = this.html;
+    // }
+    // else{
+    //   this.html='<span>'
+    //   this.html += '<a data-toggle="modal" data-target="#sign"><b>Sign In|</b></a>';
+    //   this.html+= '<a  data-toggle="modal" data-target="#register"><b>Register </b></a>'
+    //   this.html+='</span>'
+    //   document.getElementById('sideButton').innerHTML = this.html;
+    // }
 
-      this.html+='</span>'
-      document.getElementById('sideButton').innerHTML = this.html;
-    }
-    else{
-      this.html='<span>'
-      this.html += '<a data-toggle="modal" data-target="#sign"><b>Sign In|</b></a>';
-      this.html+= '<a  data-toggle="modal" data-target="#register"><b>Register </b></a>'
-      this.html+='</span>'
-      document.getElementById('sideButton').innerHTML = this.html;
-    }
 
   }
 
@@ -47,6 +48,7 @@ export class NavbarComponent implements OnInit {
     this.authService.authenticateUser(user).subscribe(data=>{
       if (data.success){
         this.authService.storedUserData(data.token, data.user)
+        console.log(data.user.roleid);
         alert('Welcome '+data.user.name);
         if(data.user.roleid== '1'){
           this.router.navigate(['admindash'])
@@ -58,7 +60,9 @@ export class NavbarComponent implements OnInit {
       else{
         alert('Id password donot matched');
         this.router.navigate(['home'])
+
       }
+
     });
   }
 
@@ -101,11 +105,13 @@ export class NavbarComponent implements OnInit {
 
   onLogoutClick(){
     const log= this.authService.logout();
-
     if (log) {
       this.router.navigate(['/home']);
       return false;
     }
+  }
+  onLoginClick(){
+      this.router.navigate(['/home']);
 
   }
 

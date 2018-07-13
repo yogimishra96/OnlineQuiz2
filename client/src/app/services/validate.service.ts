@@ -28,4 +28,18 @@ export class ValidateService {
     const re = /^[0-9]{1,3}$/;
     return re.test(question);
   }
+
+  validateQuestion(question){
+    if(question.question==undefined||question.optionA==undefined
+      ||question.optionB==undefined||question.optionC==undefined
+      ||question.optionD==undefined||question.answer==undefined){
+      return false;
+    }
+    else{
+      return true;
+    }
+  }
+
 }
+
+
