@@ -1,14 +1,9 @@
 const mongoose = require('mongoose');
 mongoose.Types.ObjectId.isValid('your id here');
-const bcrypt = require('bcryptjs');
 
-//user Schema
+//admin Schema
 
 const AdminSchema = mongoose.Schema({
-    email:{
-        type: String,
-        required: true
-    },
     question: {
         type: String,
         required: true
@@ -38,7 +33,6 @@ const AdminSchema = mongoose.Schema({
 const Admin = module.exports = mongoose.model('Admin',AdminSchema);
 
 module.exports.getUserById = function(id,callback){
-
     User.findById(id, callback);
 }
 
@@ -47,22 +41,5 @@ module.exports.getUserByUsername = function(email,callback){
     return Admin.findOne(query,callback);
 }
 
-
-
-module.exports.addUser = function(newUser,callback){
-    bcrypt.genSalt(10,(err, salt)=>{
-        bcrypt.hash(newUser.password,salt,(err,hash)=>{
-            if(err) throw err;
-            newUser.password = hash;
-            newUser.save(callback);
-        });
-    });
-}
-
-// db.collection("quiz").insertMany(docs, function(err, res) {
-//     if (err) throw err;
-//     console.log(res.insertedCount+" documents inserted");
-//
-// });
 
 

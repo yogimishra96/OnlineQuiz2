@@ -1,11 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const User = require('../models/admin');
+const Admin = require('../models/admin');
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const config = require('../../config/database');
-
-
 
 router.post('/addQuestion',(req,res,next)=>
 {   let admin = new Admin({
@@ -15,31 +13,19 @@ router.post('/addQuestion',(req,res,next)=>
     optionC: req.body.optionC,
     optionD: req.body.optionD,
     rightAnswer:req.body.answer,
-
 });
-
     admin.save(function(res,err){
         if(err){
             res.json({success: false, msg:'Failed'});
         } else{
             res.json({success: true, msg:'Successfully'});
         }
-
     });
-
-    // admin.addUser(newUser,(err,user)=>{
-    //     if(err){
-    //         res.json({success: false, msg:'Failed to register user'});
-    //     } else{
-    //         res.json({success: true, msg:'Successfully Registered'});
-    //     }
-    // })
 });
 
-
+//profile
 router.get('/profile',passport.authenticate('jwt',{session:false}),(req,res,next)=>
 {
-
     res.json({user: req.user});
 });
 
