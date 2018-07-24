@@ -45,16 +45,16 @@ import { ViewtestComponent } from './admin/viewtest/viewtest.component';
 import{ ValidateService } from './services/validate.service';
 import{ AuthService } from "./services/auth.service";
 import { AddquestionComponent } from './admin/addquestion/addquestion.component';
-import { LoginComponent } from './components/login/login.component';
+// import { LoginComponent } from './components/login/login.component';
 
 //paths
 const appRoutes :Routes =[
   {path:'',component:HomeComponent},
-  {path:'login',component:LoginComponent},
+  // {path:'login',component:LoginComponent},
   {path:'about',component:AboutComponent},
   {path:'contact',component:ContactComponent},
   {path:'home',component:HomeComponent},
-  {path:'login',component:LoginComponent},
+  // {path:'login',component:LoginComponent},
   {path:'dashboard',component:DashboardComponent},
   {path:'profile',component:ProfileComponent},
   {path:'admindash',component:AdmindashComponent},
@@ -86,7 +86,7 @@ const appRoutes :Routes =[
     AddtestComponent,
     ViewtestComponent,
     AddquestionComponent,
-    LoginComponent
+    // LoginComponent
   ],
   imports: [
     BrowserModule,
