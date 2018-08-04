@@ -45,6 +45,7 @@ import { ViewtestComponent } from './admin/viewtest/viewtest.component';
 import{ ValidateService } from './services/validate.service';
 import{ AuthService } from "./services/auth.service";
 import { AddquestionComponent } from './admin/addquestion/addquestion.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 // import { LoginComponent } from './components/login/login.component';
 
 //paths
@@ -63,7 +64,8 @@ const appRoutes :Routes =[
   {path:'addtest',component:AddtestComponent},
   {path:'addquestion',component:AddquestionComponent},
   {path:'viewtest',component:ViewtestComponent},
-  {path:'score',component:AdminscoreComponent}
+  {path:'score',component:AdminscoreComponent},
+  {path:'**',component:PageNotFoundComponent}
 ];
 
 @NgModule({
@@ -86,6 +88,7 @@ const appRoutes :Routes =[
     AddtestComponent,
     ViewtestComponent,
     AddquestionComponent,
+    PageNotFoundComponent,
     // LoginComponent
   ],
   imports: [

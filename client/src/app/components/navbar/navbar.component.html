@@ -78,6 +78,11 @@
                    type="password" id="inputPassword" class="form-control" placeholder="Password"
                    required minlength="8" maxlength="20">
           </mat-form-field>
+          <mat-form-field>
+            <input matInput type="password" [(ngModel)]="cnfPassword" name="password"
+                   type="password" id="inputPassword" class="form-control" placeholder="Confirm password"
+                   required minlength="8" maxlength="20">
+          </mat-form-field>
           <button  mat-raised-button class= "btn login"
                    type="submit" value="submit">Create Account</button>
 

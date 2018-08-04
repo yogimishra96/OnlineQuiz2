@@ -12,6 +12,7 @@ export class NavbarComponent implements OnInit {
   name:String;
   email:String;
   password:String;
+  cnfPassword:String;
   html:any;
   buttons:any;
   constructor(private authService :AuthService,
@@ -71,7 +72,8 @@ export class NavbarComponent implements OnInit {
     const user={
       name: this.name,
       email: this.email,
-      password: this.password
+      password: this.password,
+      cnfPassword: this.cnfPassword
     }
     if(!this.validateService.validateRegister(user)){
       alert('Please Fill in the details');
@@ -86,9 +88,15 @@ export class NavbarComponent implements OnInit {
 
 
     if(!this.validateService.validatePassword(user.password)){
-      alert('Please enter valid password');
+      alert('Password should contain at least 8 characters');
       return false;
     }
+
+    if(!this.validateService.validateCnfPassword(user.password,user.cnfPassword)){
+      alert('Password and confirm password should be same');
+      return false;
+    }
+
 
 //register
     this.authService.registerUser(user).subscribe(data =>{

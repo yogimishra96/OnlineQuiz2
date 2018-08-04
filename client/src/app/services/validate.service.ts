@@ -5,7 +5,7 @@ export class ValidateService {
 
   constructor() { }
   validateRegister(user){
-    if(user.name==undefined||user.email==undefined||user.password==undefined){
+    if(user.name==undefined||user.email==undefined||user.password==undefined || user.cnfPassword==undefined) {
       return false;
     }
     else{
@@ -23,6 +23,15 @@ export class ValidateService {
     const re = /^[A-Za-z0-9]{8,15}$/;
     return re.test(password);
   }
+
+  validateCnfPassword(password,cnfPassword){
+    if(password === cnfPassword){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
 
   validateTest(question) {
     const re = /^[0-9]{1,3}$/;
